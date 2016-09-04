@@ -1,12 +1,21 @@
 import RPi.GPIO as GPIO
 import time
+from sets import Set
 
-GPIO.setmode(GPIO.BCM)
+class Switch:
 
-GPIO.setup(18, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+    def __init__(self, pinNumber): 
+        self.pinNumber = pinNumber
+        GPIO.setup(pinNo, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+    
+    def checkSwithces():
+        inputState = GPIO.input(18)
 
-while True:
-    inputState = GPIO.input(18)
-    if inputState == False:
-        print("Button pressed")
-        time.sleep(.2)
+        if inputState == False:
+            if buttonLastPressed == False:
+                self.buttonLastPressed = True
+                return True
+        
+        buttonLastPressed = False
+        return false
+    

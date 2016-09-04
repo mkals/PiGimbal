@@ -1,30 +1,14 @@
 import RPi.GPIO as GPIO
-import time
-GPIO.setmode(GPIO.BOARD)
 
-GPIO.setup(7, GPIO.OUT)
+class Pwm:
+    frequency = 50
 
-p = GPIO.PWM(7,50)
+    def __init__(self, pinNumber):
 
-p.start(0)
+        GPIO.setup(7, GPIO.OUT)
+        self.p = GPIO.PWM(pinNumber, frequency)
+        self.p.start(0)
 
-num = 0
-ascending = True
-
-try:
-    while True:
-
-        for i in range(100):
-            p.ChangeDutyCycle(i)
-            time.sleep(.05)
-
-        for i in range(100):
-            p.ChangeDutyCycle(100-i)
-            time.sleep(.05)
-
-except KeyboardInterrupt:
-    pass
-
-p.stop()
-GPIO.cleanup()
-
+    def move(value):
+        self.p.ChangeDutyCycle(i)
+        
