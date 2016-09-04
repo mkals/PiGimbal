@@ -8,8 +8,8 @@ class Switch:
         self.pinNumber = pinNumber
         GPIO.setup(pinNo, GPIO.IN, pull_up_down=GPIO.PUD_UP)
     
-    def checkSwithces():
-        inputState = GPIO.input(18)
+    def activated():
+        inputState = GPIO.input(self.pinNumber)
 
         if inputState == False:
             if buttonLastPressed == False:
@@ -17,5 +17,5 @@ class Switch:
                 return True
         
         buttonLastPressed = False
-        return false
+        return False
     
