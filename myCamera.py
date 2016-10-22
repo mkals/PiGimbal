@@ -1,7 +1,7 @@
 from picamera import PiCamera
 import os
 
-class VideoCapture: 
+class Camera: 
             
     cam = Camera()
     disp = Display()

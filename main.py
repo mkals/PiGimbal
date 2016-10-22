@@ -4,8 +4,8 @@ class Mode(Enum):
     video = 0
     image = 1
     timelapse = 2
-#    faceTracking = 3
-#    objectTracking = 4
+    faceTracking = 3
+    objectTracking = 4
 
 
 from RPi import GPIO
@@ -34,10 +34,10 @@ while True:
         elif mode == Mode.image:
             mode = Mode.timelapse
         elif mode == Mode.timelapse:
-#            mode = Mode.faceTracking
-#        elif mode == Mode.faceTracking:
-#           mode = Mode.objectTracking
-#        else:
+            mode = Mode.faceTracking
+        elif mode == Mode.faceTracking:
+           mode = Mode.objectTracking
+        else:
             mode = Mode.video
 
     if recordSwitch.activated():
@@ -61,10 +61,17 @@ while True:
                 camera.startTimelapse()
                 recording = True
 
-#        elif mode == Mode.faceTracking:
+        elif mode == Mode.faceTracking:
+            if recording:
+                recording = False
+            else:
+                recording = True
 
-#        elif mode == Mode.objectTracking:
-        
+        elif mode == Mode.objectTracking:
+            if recording:
+                recording = False
+            else:
+                recording = True
             
     
 
